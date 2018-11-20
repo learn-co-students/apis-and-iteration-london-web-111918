@@ -1,6 +1,7 @@
 require 'rest-client'
 require 'json'
 require 'pry'
+require_relative "../lib/command_line_interface.rb"
 
 def get_character_movies_from_api(character_name)
   #make the web request
@@ -18,6 +19,20 @@ def get_character_movies_from_api(character_name)
   #  of movies by title. Have a play around with the puts with other info about a given film.
 end
 
+def parse_names(results)
+  results["names"].map do |name|
+    if get_character_from_user == name
+      results["films"]
+    end
+  end
+end
+
+# def parse_films(results)
+#   results["films"].map do |film|
+#   end
+# end
+
+
 def print_movies(films)
   # some iteration magic and puts out the movies in a nice list
 end
@@ -31,3 +46,5 @@ end
 
 # that `get_character_movies_from_api` method is probably pretty long. Does it do more than one job?
 # can you split it up into helper methods?
+
+Pry.start
