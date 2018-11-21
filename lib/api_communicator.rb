@@ -10,12 +10,13 @@ end
 
 def return_results(result, character_name)
 result["results"].collect do |people|
-  if people["name"] == character_name
-    films = people["films"]
-    return films
+    if people["name"] == character_name
+      films = people["films"]
+      return films
+    end
   end
 end
-end
+
 
 def print_movies(films_array)
 counter = 1
@@ -29,6 +30,7 @@ end
 
 def show_character_movies(character)
   result = make_search
+  binding.pry
   films_array = return_results(result, character)
   print_movies(films_array)
 end
