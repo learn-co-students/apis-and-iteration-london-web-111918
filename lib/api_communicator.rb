@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 
 
-def make_search
+def make_people_search
   response_string = RestClient.get('http://www.swapi.co/api/people/')
   JSON.parse(response_string)
 end
@@ -12,8 +12,8 @@ def return_results(result, character_name)
 result["results"].collect do |people|
     if people["name"] == character_name
       films = people["films"]
-      return films
     end
+    return films
   end
 end
 
@@ -29,8 +29,7 @@ counter = 1
 end
 
 def show_character_movies(character)
-  result = make_search
-  binding.pry
+  result = make_people_search
   films_array = return_results(result, character)
   print_movies(films_array)
 end
